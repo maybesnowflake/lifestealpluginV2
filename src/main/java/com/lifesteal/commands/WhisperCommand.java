@@ -39,5 +39,6 @@ public class WhisperCommand implements CommandExecutor {
         String message = msg.toString();
         from.sendMessage("§7[나 → §f" + to.getName() + "§7] §f" + message);
         to.sendMessage("§7[§f" + from.getName() + "§7 → 나] §f" + message);
+        return true;  // ← 이 줄 추가
     }
 }
