@@ -1,0 +1,87 @@
+# LifeSteal 플러그인 설정 파일
+
+# 체력 설정
+hearts:
+  start: 10          # 시작 최대 하트 (기본값: 10)
+  max: 20            # 최대 하트 제한 (기본값: 20)
+  min: 1             # 최소 하트 (0이 되면 밴)
+  lose-on-natural-death: true   # 자연사(낙사, 굶주림 등)에서도 하트 감소 여부
+
+# Combat Tag 설정
+combat:
+  tag-duration: 20           # Combat Tag 지속 시간 (초)
+  heart-use-cooldown: 30     # 전투 종료 후 하트 아이템 사용 가능까지 대기 시간 (초)
+
+# Withdraw 설정
+withdraw:
+  max-per-use: 3    # 한 번에 최대 withdraw 가능 개수
+
+# 밴 설정
+ban:
+  message: "§c당신의 체력이 0이 되었습니다. 밴되었습니다!"
+  revive-item-name: "§d생환서"
+
+# 하트 아이템 레시피 (true = 활성화, false = 비활성화)
+# 레시피는 비주얼 스튜디오(config)에서 직접 수정 가능
+recipes:
+  heart:
+    enabled: true
+    # 3x3 격자 레시피 (A=첫번째줄, B=두번째줄, C=세번째줄)
+    # 각 슬롯: 아이템 Material 이름 (빈칸은 AIR)
+    shape:
+      - "AAA"
+      - "ABA"
+      - "AAA"
+    ingredients:
+      A: GOLD_INGOT
+      B: NETHER_STAR
+    result:
+      material: NETHER_STAR
+      amount: 1
+      name: "§c§l하트"
+      lore:
+        - "§7우클릭하여 사용"
+        - "§7최대 체력이 §c+1§7 증가합니다"
+      custom-model-data: 1001
+
+  revive-book:
+    enabled: true
+    shape:
+      - "ABA"
+      - "BCB"
+      - "ABA"
+    ingredients:
+      A: DIAMOND
+      B: GOLD_INGOT
+      C: TOTEM_OF_UNDYING
+    result:
+      material: BOOK
+      amount: 1
+      name: "§d§l생환서"
+      lore:
+        - "§7밴된 플레이어를 부활시킵니다"
+        - "§7운영자에게 제출하여 사용"
+      custom-model-data: 1002
+
+# 사망 설정
+death:
+  # 아이템 퍼짐 반경 (블록 단위)
+  # 0 = 기본 동작 (제자리 드롭)
+  # 5 = 반경 5블록 안에 랜덤 퍼짐
+  drop-radius: 0
+
+# 네더라이트 장비 설정
+# true = 네더라이트 장비 사용 가능
+# false = 네더라이트 장비(검,도끼,곡괭이,삽,괭이,헬멧,흉갑,레깅스,부츠) 착용/사용 불가
+#         단, 네더라이트 주괴/스크랩/블록은 건축/꾸미기용으로 사용 가능
+netherite:
+  enabled: true
+
+# XRay 방지 설정
+xray:
+  enabled: true
+  alert-admins: true   # 관리자에게 알림 전송
+  log-to-file: true    # 파일에 기록
+  # 감지 임계값: N틱 안에 이 개수 이상 광석 채굴 시 경고
+  ore-threshold: 10
+  check-interval: 200  # 틱 단위 (200틱 = 10초)
