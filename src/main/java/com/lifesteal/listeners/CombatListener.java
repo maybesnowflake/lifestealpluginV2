@@ -8,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityResurrectEvent;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -158,15 +157,6 @@ public class CombatListener implements Listener {
             player.getWorld().dropItemNaturally(player.getLocation(), hand);
             inv.setItemInMainHand(null);
             player.sendMessage("§c네더라이트 장비는 사용할 수 없습니다!");
-        }
-    }
-
-    // 폭발 무기 제한
-    @EventHandler
-    public void onExplosion(EntityExplodeEvent event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof TNTPrimed || entity instanceof Creeper) {
-            event.blockList().clear();
         }
     }
 
